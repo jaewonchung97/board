@@ -62,7 +62,7 @@
 		WHERE
 			idx = #{idx}
 	</update>
-	<select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
+	<select id="selectBoardList" parameterType="Criteria" resultType="BoardDTO">
 		SELECT
 			<include refid="boardColumns" />
 		FROM
@@ -73,8 +73,10 @@
 			notice_yn ASC,
 			idx DESC,
 			insert_time DESC
+		LIMIT
+			#{startPage}, #{recordsPerPage}
 	</select>
-	<select id="selectBoardTotalCount" parameterType="BoardDTO" resultType="int">
+	<select id="selectBoardTotalCount" parameterType="Criteria" resultType="int">
 		SELECT
 			COUNT(*)
 		FROM
