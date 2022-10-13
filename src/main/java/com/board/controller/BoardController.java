@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.domain.BoardDTO;
 import com.board.service.BoardService;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -79,6 +81,26 @@ public class BoardController {
 
 		return "board/view";
 	}
+
+	@PostMapping(value="/board/delete.do")
+	public String deleteBoard(@RequestParam(value = "idx", required = false) Long idx) {
+		if (idx==null) {
+			return "redirect:/board/list.do";
+		}
+		try {
+			boolean isDeleted = boardService.deleteBoard(idx);
+			if (isDeleted == false) {
+				// TODO: Failed to Delete
+			}
+		} catch(DataAccessException e){
+			// TODO: Error Occured during Data Accesssing
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return "redirect:/board/list.do";
+	}
+	
 	
 	
 }
