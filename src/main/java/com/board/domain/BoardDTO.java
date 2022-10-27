@@ -1,8 +1,6 @@
 package com.board.domain;
 
-import java.time.LocalDateTime;
-
-public class BoardDTO {
+public class BoardDTO extends CommonDTO {
 	
 	private Long idx;
 	private String title;
@@ -11,32 +9,6 @@ public class BoardDTO {
 	private int viewCnt;
 	private String noticeYn;
 	private String secretYn;
-	private String deleteYn;
-	private LocalDateTime insertTime;
-	private LocalDateTime updateTime;
-	private LocalDateTime deleteTime;
-	
-	public BoardDTO(Long idx, String title, String content, String writer, int viewCnt, String noticeYn,
-			String secretYn, String deleteYn, LocalDateTime insertTime, LocalDateTime updateTime,
-			LocalDateTime deleteTime) {
-		super();
-		this.idx = idx;
-		this.title = title;
-		this.content = content;
-		this.writer = writer;
-		this.viewCnt = viewCnt;
-		this.noticeYn = noticeYn;
-		this.secretYn = secretYn;
-		this.deleteYn = deleteYn;
-		this.insertTime = insertTime;
-		this.updateTime = updateTime;
-		this.deleteTime = deleteTime;
-	}
-
-	public BoardDTO() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public Long getIdx() {
 		return idx;
 	}
@@ -79,29 +51,6 @@ public class BoardDTO {
 	public void setSecretYn(String secretYn) {
 		this.secretYn = secretYn;
 	}
-	public String getDeleteYn() {
-		return deleteYn;
-	}
-	public void setDeleteYn(String deleteYn) {
-		this.deleteYn = deleteYn;
-	}
-	public LocalDateTime getInsertTime() {
-		return insertTime;
-	}
-	public void setInsertTime(LocalDateTime insertTime) {
-		this.insertTime = insertTime;
-	}
-	public LocalDateTime getUpdateTime() {
-		return updateTime;
-	}
-	public void setUpdateTime(LocalDateTime updateTime) {
-		this.updateTime = updateTime;
-	}
-	public LocalDateTime getDeleteTime() {
-		return deleteTime;
-	}
-	public void setDeleteTime(LocalDateTime deleteTime) {
-		this.deleteTime = deleteTime;
-	}
+	
 	
 }

@@ -50,7 +50,6 @@ public class DBConfiguration {
 	@Bean
 	@ConfigurationProperties(prefix = "mybatis.configuration")
 	public org.apache.ibatis.session.Configuration mybatisConfg() {
-		// TODO Auto-generated method stub
 		return new org.apache.ibatis.session.Configuration();
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.board.domain.BoardDTO;
 import com.board.mapper.BoardMapper;
-import com.board.paging.Criteria;
+import com.board.paging.PaginationInfo;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -34,7 +34,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean deleteBoard(long idx) {
-		// TODO Auto-generated method stub
 		int queryResult = 0;
 		
 		BoardDTO board = boardMapper.selectBoardDetail(idx);
@@ -46,14 +45,18 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDTO> getBoardList(Criteria criteria) {
-		// TODO Auto-generated method stub
+	public List<BoardDTO> getBoardList(BoardDTO params) {
 		List<BoardDTO> boardList = Collections.emptyList();
 		
-		int boardTotalCount = boardMapper.selectBoardTotalCount(criteria);
+		int boardTotalCount = boardMapper.selectBoardTotalCount(params);
+
+		PaginationInfo paginationInfo = new PaginationInfo(params);
+		paginationInfo.setTotalRecordCount(boardTotalCount);
+
+		params.setPaginationInfo(paginationInfo);
 		
 		if(boardTotalCount > 0) {
-			boardList = boardMapper.selectBoardList(criteria);
+			boardList = boardMapper.selectBoardList(params);
 		}
 		return boardList;
 	}

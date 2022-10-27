@@ -26,7 +26,6 @@ class BoardApplicationTests {
 			System.out.println(context.getBean("sqlSessionFactory"));
 			System.out.println("================");
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
@@ -38,7 +37,6 @@ class BoardApplicationTests {
 			System.out.println(sessionFactory.toString());
 			System.out.println("=========================");
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
