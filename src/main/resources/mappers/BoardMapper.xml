@@ -14,10 +14,10 @@
 		, update_time
 		, delete_time
 	</sql>
-	
+
 	<insert id="insertBoard" parameterType="boardDTO">
 		INSERT INTO board (
-			<include refid="boardColumns" />
+		<include refid="boardColumns" />
 		) VALUES (
 			  #{idx}
 			, #{title}
@@ -34,7 +34,7 @@
 	</insert>
 	<select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
 		SELECT
-			<include refid="boardColumns" />
+		<include refid="boardColumns" />
 		FROM
 			board
 		WHERE
@@ -64,17 +64,17 @@
 	</update>
 	<select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
 		SELECT
-			<include refid="boardColumns" />
+		<include refid="boardColumns" />
 		FROM
 			board
 		WHERE
 			delete_yn = 'N'
+		<include refid="CommonMapper.search" />
 		ORDER BY
 			notice_yn ASC,
 			idx DESC,
 			insert_time DESC
-		LIMIT
-			#{paginationInfo.firstRecordIndex}, #{recordsPerPage}
+		<include refid="CommonMapper.paging" />
 	</select>
 	<select id="selectBoardTotalCount" parameterType="BoardDTO" resultType="int">
 		SELECT
@@ -83,5 +83,6 @@
 			board
 		WHERE
 			delete_yn = 'N'
+		<include refid="CommonMapper.search" />
 	</select>
 </mapper>
